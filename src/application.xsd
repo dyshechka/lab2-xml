@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://martha.ru"
+            xmlns:tns="http://martha.ru"
+        attributeFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="document">
+        <xsd:sequence>
+            <xsd:element name="documentNumber" type="xsd:string"/>
+            <xsd:element name="documentSerialNumber" type="xsd:string"/>
+            <xsd:element name="documentType" type="xsd:integer"/>
+            <xsd:element name="issueDate" type="xsd:date"/>
+            <xsd:element name="issuedBy" type="xsd:string"/>
+            <xsd:element name="subdivisionCode" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="contact">
+        <xsd:sequence>
+            <xsd:element name="contactType" type="xsd:string"/>
+            <xsd:element name="contactValue" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="person">
+        <xsd:sequence>
+            <xsd:element name="firstName" type="xsd:string"/>
+            <xsd:element name="lastName" type="xsd:string"/>
+            <xsd:element name="patronymic" type="xsd:string"/>
+            <xsd:element name="birthDate" type="xsd:date"/>
+            <xsd:element name="birthPlace" type="xsd:string"/>
+            <xsd:element name="gender" type="xsd:integer"/>
+            <xsd:element name="contacts" type="tns:contact" maxOccurs="10"/>
+            <xsd:simpleType name="contacts">
+                <xsd:list itemType="tns:contact"/>
+            </xsd:simpleType>
+            <xsd:simpleType name="documents">
+                <xsd:list itemType="tns:document"/>
+            </xsd:simpleType>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="good">
+        <xsd:attribute type="xsd:string" name="goodType">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="ПС"/>
+                    <xsd:enumeration value="МОНИТОР"/>
+                    <xsd:enumeration value="ПРИНТЕР"/>
+                    <xsd:enumeration value="МЫШЬ"/>
+                    <xsd:enumeration value="КЛАВИАТУРА"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:element name="name" type="xsd:string"/>
+        <xsd:element name="quantity" type="xsd:integer"/>
+        <xsd:element name="cost" type="xsd:double"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="application">
+        <xsd:element name="codeWord" type="xsd:string"/>
+        <xsd:element name="loanProductId" type="xsd:string"/>
+        <xsd:element name="tradePoint" type="xsd:integer"/>
+        <xsd:element name="incomeType" type="xsd:integer"/>
+        <xsd:element name="monthlyIncome" type="xsd:integer"/>
+        <xsd:element name="initialPayment" type="xsd:integer"/>
+        <xsd:element name="loanTerm" type="xsd:integer"/>
+        <xsd:element name="transferClaimAgree" type="xsd:boolean"/>
+        <xsd:simpleType name="goods">
+            <xsd:list itemType="tns:good"/>
+        </xsd:simpleType>
+        <xsd:element name="person" type="tns:person"/>
+    </xsd:complexType>
+</xsd:schema>

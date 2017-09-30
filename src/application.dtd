@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT application (codeWord, loanProductId, tradePoint, incomeType, monthlyIncome, initialPayment, loanTerm, transferClaimAgree, draft, goods, person)>
+        <!ATTLIST application number ID #REQUIRED>
+            <!ELEMENT codeWord (#PCDATA)>
+            <!ELEMENT loanProductId (#PCDATA)>
+            <!ELEMENT tradePoint (#PCDATA)>
+            <!ELEMENT incomeType (#PCDATA)>
+            <!ELEMENT monthlyIncome (#PCDATA)>
+            <!ELEMENT initialPayment (#PCDATA)>
+            <!ELEMENT loanTerm (#PCDATA)>
+            <!ELEMENT transferClaimAgree (#PCDATA)>
+            <!ELEMENT draft (#PCDATA)>
+                <!ATTLIST draft applicationId IDREF #REQUIRED>
+
+            <!ELEMENT goods (good)+>
+            <!ELEMENT good (name, quantity, cost)>
+                <!ELEMENT name (#PCDATA)>
+                <!ELEMENT quantity (#PCDATA)>
+                <!ELEMENT cost (#PCDATA)>
+
+            <!ELEMENT person (firstName, lastName, patronymic, gender, birthDate, birthPlace, contacts, documents)>
+                <!ELEMENT firstName (#PCDATA)>
+                <!ELEMENT lastName (#PCDATA)>
+                <!ELEMENT patronymic (#PCDATA)>
+                <!ELEMENT gender (#PCDATA)>
+                <!ELEMENT birthDate (#PCDATA)>
+                <!ELEMENT birthPlace (#PCDATA)>
+
+                <!ELEMENT contacts (contact)+>
+                <!ELEMENT contact (contactType, contactValue)>
+                    <!ELEMENT contactType (#PCDATA)>
+                    <!ELEMENT contactValue (#PCDATA)>
+
+                <!ELEMENT documents (document)+>
+                <!ELEMENT document (documentNumber, documentSerialNumber, documentType, issueDate, issuedBy, subdivisionCode)>
+                    <!ELEMENT documentNumber (#PCDATA)>
+                    <!ELEMENT documentSerialNumber (#PCDATA)>
+                    <!ELEMENT documentType (#PCDATA)>
+                    <!ELEMENT issueDate (#PCDATA)>
+                    <!ELEMENT issuedBy (#PCDATA)>
+                    <!ELEMENT subdivisionCode (#PCDATA)>
+
+
+
+
+
